@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'reloader' => 'reloader#index'
+  get 'listener' => 'listener#index'
 end

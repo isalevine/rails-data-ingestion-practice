@@ -1,14 +1,14 @@
 require 'reloader/sse'
 require 'net/http'
 
-class ReloaderController < ApplicationController
+class ListenerController < ApplicationController
     include ActionController::Live
 
     def index
         response.headers['Content-Type'] = "application/json"
         sse = Reloader::SSE.new(response.stream)
         begin
-            url = URI.parse('http://localhost:4567/stream')
+            url = URI.parse('http://localhost:3000/broadcaster')
             req = Net::HTTP::Get.new(url.to_s)
             res = Net::HTTP.start(url.host, url.port) {|http|
                 http.request(req)
