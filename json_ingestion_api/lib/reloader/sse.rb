@@ -6,11 +6,8 @@ module Reloader
             @io = io
         end
 
-        def write object, options = {}
-            options.each do |key, value|
-                @io.write "#{key}: #{value}\n"
-            end
-            @io.write "data: #{JSON.dump(object)}\n\n"
+        def write object
+            @io.write JSON.dump(object)
         end
 
         def close

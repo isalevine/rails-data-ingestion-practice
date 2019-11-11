@@ -26,7 +26,7 @@ get '/stream' do
     content_type :json
 
     stream do |out|
-        5.times do
+        5.times do      # this will batch together 5 json objects as one string, which need to be parsed by reloader_controller
             character_hash = {
                 "uuid": SecureRandom.uuid,
                 "name": name_array.sample,

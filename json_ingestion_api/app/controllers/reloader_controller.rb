@@ -6,16 +6,14 @@ class ReloaderController < ApplicationController
 
     def index
         response.headers['Content-Type'] = "application/json"
-
         sse = Reloader::SSE.new(response.stream)
-
         begin
             url = URI.parse('http://localhost:4567/stream')
             req = Net::HTTP::Get.new(url.to_s)
             res = Net::HTTP.start(url.host, url.port) {|http|
                 http.request(req)
             }
-            sse.write(res.body) # output to console for debugging
+            sse.write(res.body) # output to console for debugging (res.body is one string)
 
             char_array = res.body.split("}")
             char_array.each do |char_str|
@@ -24,6 +22,7 @@ class ReloaderController < ApplicationController
             end
 
         rescue IOError
+            # client disconnected
         ensure
             sse.close
         end
