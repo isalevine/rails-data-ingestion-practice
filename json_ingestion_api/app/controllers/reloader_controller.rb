@@ -22,6 +22,9 @@ class ReloaderController < ApplicationController
                 }
                 sse.write(res.body)
 
+                json = JSON.parse(res.body)
+                Character.create("uuid": json["uuid"], "name": json["name"], "hp": json["hp"], "magic": json["magic"])
+
                 sleep 1
             end
         rescue IOError
