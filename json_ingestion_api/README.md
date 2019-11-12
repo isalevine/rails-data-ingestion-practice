@@ -18,5 +18,6 @@
 * https://stackoverflow.com/a/477819
 * https://apidock.com/ruby/JSON/dump
 * https://docs.ruby-lang.org/en/2.0.0/Net/HTTP.html
+* https://www.html5rocks.com/en/tutorials/eventsource/basics/
 * https://medium.com/@fbazzarella/streaming-data-with-server-sent-events-b0694e6e0b32
 
